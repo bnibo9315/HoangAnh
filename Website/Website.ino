@@ -1,15 +1,13 @@
 // Load Wi-Fi library
 #include <ESP8266WiFi.h>
-#include <Servo.h>
 // Replace with your network credentials
 const char* ssid     = "PhongTro4NG";
 const char* password = "Adminlong98";
-#define Motor1  D1
-#define Motor2  D2
-#define Motor3  D5
-#define Motor4  D6
+#define sensor1 4
+#define sensor2 5
+int value1 = 1 ;
+int value2 = 1;
 WiFiServer server(80);
-Servo servo;
 // Variable to store the HTTP request
 String header;
 // Current time
@@ -34,19 +32,13 @@ void setup() {
   Serial.println("WiFi connected.");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-  pinMode(Motor1,OUTPUT);
-  pinMode(Motor2,OUTPUT);
-  pinMode(Motor3,OUTPUT);
-  pinMode(Motor4,OUTPUT);
-  digitalWrite(Motor1,LOW);
-  digitalWrite(Motor2,LOW);
-  digitalWrite(Motor3,LOW);   
-  digitalWrite(Motor4,LOW);
   server.begin();
 
 }
 void loop() {
   ////////////////////////Main/////////////////////////////////////
+  int value1 = digitalRead(sensor1);
+  int value2 = digitalRead(sensor2);
   
   //////////////////////////////WEB SITE/////////////////////////////
   
@@ -68,16 +60,7 @@ void loop() {
         if (c == '\n') {                    // if the byte is a newline character
           // if the current line is blank, you got two newline characters in a row.
           // that's the end of the client HTTP request, so send a response:
-          if (currentLine.length() == 0) {
-              
-              
-            if (header.indexOf("GET /on") >= 0) {
-              digitalWrite(Motor1,LOW);
-              digitalWrite(Motor2,1023);
-            } else if (header.indexOf("GET /off") >= 0) {
-              digitalWrite(Motor1,LOW);
-              digitalWrite(Motor2,LOW);
-            } 
+          if (currentLine.length() == 0){
             
             // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
             // and a content-type so the client knows what's coming, then a blank line:
@@ -86,10 +69,9 @@ void loop() {
             client.println("Connection: close");
             client.println();
 
-            // Display the HTML web page
+            // x` the HTML web page
             client.println("<!DOCTYPE html><html>");
-            client.println("<head><meta  charshet=\"utf-8\" content='0.5'\name=\"viewport\" content=\"width=device-width, initial-scale=1\">"); //http-equiv='refresh'
-            client.println("<link rel=\"icon\" href=\"data:,\">");
+            client.println("<head><meta http-equiv='refresh' charshet=\"utf-8\" content='0.5' \name=\"viewport\" \">"); //http-equiv='refresh'
             // CSS to style the on/off buttons
             // Feel free to change the background-color and font-size attributes to fit your preferences
             client.println("<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}");
@@ -104,42 +86,36 @@ void loop() {
             client.println(".button1 {background-color: MidnightBlue; border-radius: 4px;}");
             client.println(".button2 {background-color: Red; border-radius: 4px;}");
             client.println(".button3 {background-color: Orange; border-radius: 4px;}");
-            client.println(".background-image {opacity: 0.1;}</style></head>");
+            client.println(".background-image {opacity: 0.1;}");
+            client.println(".background-image {opacity: 0.1;}</style>");
+            client.println("<script>function OnMotor(){ var x = document.getElementById(\"OnMotor\"); x.setAttribute(\"src\", \"http://192.168.1.36/on\");};");
+            client.println("function OffMotor(){ var y = document.getElementById(\"OffMotor\"); y.setAttribute(\"src\", \"http://192.168.1.36/off\"); }</script>");
+            client.println("</head>");
             
             // Web Page Heading
             client.println("<body style=\"background-image: url('https://d3av3o1z276gfa.cloudfront.net/images/place/gYsaVvlH265n2JW3YW9UNYNIm0qDwuK8.jpeg');background-repeat: no-repeat;background-attachment: fixed;background-position: bottom;background-size: 300px 400px;height: 1600;width:2560;\" ><h1 style='font-size: 100px;');'>VAA AirPort </h1>");
             client.println("<table id=\"bay\">");
             client.println("<tr><th>Bay : </th><th>Fight No :</th><th>Status :</th>");
             client.println("<tr><td>Bay 1</td><td>VAA762</td><td>");
-            if(text == "OffAll" ){
+            if(value1 == 1 ){
               client.println("<img style=\"width:50px;height:50px;\" src=\"https://www.pikpng.com/pngl/b/181-1819748_green-online-icon-png-clipart.png\" alt=\"status\"  /></td>");
-              client.println("<tr><td>Bay 2</td><td>VAA442</td><td>");
-              client.println("<img style=\"width:50px;height:50px;\" src=\"https://www.pikpng.com/pngl/b/181-1819748_green-online-icon-png-clipart.png\" alt=\"status\"  /></td>");
-              Serial.println(text);
             }
-            else if (text == "OnAll")
+            else
             {
               client.println("<img style=\"width:50px;height:50px;\" src=\"http://www.clker.com/cliparts/D/B/O/5/Q/z/glossy-red-icon-button-md.png\" alt=\"status\"  /></td>");
-              client.println("<tr><td>Bay 2</td><td>VAA442</td><td>");
-              client.println("<img style=\"width:50px;height:50px;\" src=\"http://www.clker.com/cliparts/D/B/O/5/Q/z/glossy-red-icon-button-md.png\" alt=\"status\"  /></td>");
-              Serial.println(text);
               }
-            else if(text == "OnOff")
-            {
-               client.println("<img style=\"width:50px;height:50px;\" src=\"http://www.clker.com/cliparts/D/B/O/5/Q/z/glossy-red-icon-button-md.png\" alt=\"status\"  /></td>");
               client.println("<tr><td>Bay 2</td><td>VAA442</td><td>");
-              client.println("<img style=\"width:50px;height:50px;\" src=\"https://www.pikpng.com/pngl/b/181-1819748_green-online-icon-png-clipart.png\" alt=\"status\"  /></td>");
-              Serial.println(text);
-              }
-            else if (text == "OffOn")
+            if(value2 == 1)
             {
               client.println("<img style=\"width:50px;height:50px;\" src=\"https://www.pikpng.com/pngl/b/181-1819748_green-online-icon-png-clipart.png\" alt=\"status\"  /></td>");
-              client.println("<tr><td>Bay 2</td><td>VAA442</td><td>");
-              client.println("<img style=\"width:50px;height:50px;\" src=\"http://www.clker.com/cliparts/D/B/O/5/Q/z/glossy-red-icon-button-md.png\" alt=\"status\"  /></td>");
-              Serial.println(text);
               }
-              else {Serial.println("False");}
-            client.println("</table><h3><strong>Control device</strong></h3><button onclick=\"window.location.reload()\" class=\"button button3\">Refresh</button><button onclick=\"window.location.href=' /on'\" class=\"button button1\">Start</button><button onclick=\"window.location.href='/off'\" class=\"button button2\">Stop</button>");
+            else
+            {
+              client.println("<img style=\"width:50px;height:50px;\" src=\"http://www.clker.com/cliparts/D/B/O/5/Q/z/glossy-red-icon-button-md.png\" alt=\"status\"  /></td>");
+              }
+            client.println("</table><h3><strong>Control device</strong></h3><button onclick=\"window.location.reload()\" class=\"button button3\">Refresh</button><button onclick=\"OnMotor()\" class=\"button button1\">Start</button><button onclick=\"OffMotor()\" class=\"button button2\">Stop</button>");
+            client.println("<iframe id='OnMotor'  style='height:1px;width:1px;border:none;'></iframe>");
+            client.println("<iframe id='OffMotor'  style='height:1px;width:1px;border:none;'></iframe>");
             client.println("</body></html>");
 
             // The HTTP response ends with another blank line
