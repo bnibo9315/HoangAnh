@@ -88,8 +88,8 @@ void loop() {
             client.println(".button3 {background-color: Orange; border-radius: 4px;}");
             client.println(".background-image {opacity: 0.1;}");
             client.println(".background-image {opacity: 0.1;}</style>");
-            client.println("<script>function OnMotor(){ var x = document.getElementById(\"OnMotor\"); x.setAttribute(\"src\", \"http://192.168.1.36/on\");};");
-            client.println("function OffMotor(){ var y = document.getElementById(\"OffMotor\"); y.setAttribute(\"src\", \"http://192.168.1.36/off\"); }</script>");
+            client.println("<script>function OnMotor(){ var x = document.getElementById(\"OnMotor\"); x.setAttribute(\"src\", \"http://192.168.1.57/on\");};");
+            client.println("function OffMotor(){ var y = document.getElementById(\"OffMotor\"); y.setAttribute(\"src\", \"http://192.168.1.57/off\"); }</script>");
             client.println("</head>");
             
             // Web Page Heading

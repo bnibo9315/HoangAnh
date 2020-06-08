@@ -1,0 +1,240 @@
+ (routes 
+  (resolution mm 100000)
+  (parser
+  )
+  (parser
+  )
+  (structure_out
+   (layer TOP (type signal)
+   )
+   (layer I1 (type signal)
+   )
+   (layer I2 (type signal)
+   )
+   (layer I3 (type signal)
+   )
+   (layer I4 (type signal)
+   )
+   (layer I5 (type signal)
+   )
+   (layer I6 (type signal)
+   )
+   (layer I7 (type signal)
+   )
+   (layer I8 (type signal)
+   )
+   (layer I9 (type signal)
+   )
+   (layer I10 (type signal)
+   )
+   (layer I11 (type signal)
+   )
+   (layer I12 (type signal)
+   )
+   (layer I13 (type signal)
+   )
+   (layer I14 (type signal)
+   )
+   (layer BOT (type signal)
+   )
+  )
+  (library_out
+  (padstack $VIA#0_SIGNAL
+   (shape (circ TOP 76200 0 0))
+   (shape (circ I1 76200 0 0))
+   (shape (circ I2 76200 0 0))
+   (shape (circ I3 76200 0 0))
+   (shape (circ I4 76200 0 0))
+   (shape (circ I5 76200 0 0))
+   (shape (circ I6 76200 0 0))
+   (shape (circ I7 76200 0 0))
+   (shape (circ I8 76200 0 0))
+   (shape (circ I9 76200 0 0))
+   (shape (circ I10 76200 0 0))
+   (shape (circ I11 76200 0 0))
+   (shape (circ I12 76200 0 0))
+   (shape (circ I13 76200 0 0))
+   (shape (circ I14 76200 0 0))
+   (shape (circ BOT 76200 0 0))
+  )
+  (padstack $VIA#0_POWER
+   (shape (circ TOP 76200 0 0))
+   (shape (circ I1 76200 0 0))
+   (shape (circ I2 76200 0 0))
+   (shape (circ I3 76200 0 0))
+   (shape (circ I4 76200 0 0))
+   (shape (circ I5 76200 0 0))
+   (shape (circ I6 76200 0 0))
+   (shape (circ I7 76200 0 0))
+   (shape (circ I8 76200 0 0))
+   (shape (circ I9 76200 0 0))
+   (shape (circ I10 76200 0 0))
+   (shape (circ I11 76200 0 0))
+   (shape (circ I12 76200 0 0))
+   (shape (circ I13 76200 0 0))
+   (shape (circ I14 76200 0 0))
+   (shape (circ BOT 76200 0 0))
+  )
+  )
+  (network_out
+   (Net " SCLK" 
+   (rule
+   )
+   )
+   (Net " SCLK." 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 6222000 -7366000 6222000 -7366000 6413500
+     -6477000 6413500 -6477000 6223000)
+    (connect (terminal pin NANO1-22) (terminal pin J2-2))
+   )
+   )
+   (Net +5V 
+   (rule
+   )
+   (wire (path BOT 76200  -6985000 6223000 -6985000 5461000)
+    (connect (terminal pin J2-0) (terminal pin J1-0))
+   )
+   (wire (path BOT 76200  -10922000 6858000 -10922000 4572000 -10668000 4572000)
+    (connect (terminal pin J6-0) (terminal pin J7-1))
+   )
+   (wire (path BOT 76200  -9500000 4444000 -10067822 4444000 -10067822 4572000
+     -10668000 4572000)
+    (connect (terminal pin NANO1-14) (terminal pin J7-1))
+   )
+   (wire (path BOT 76200  -10922000 7493000 -10922000 6858000)
+    (connect (terminal pin J5-0) (terminal pin J6-0))
+    (attr bus)
+   )
+   )
+   (Net DIO 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 5968000 -5969000 5968000 -5969000 5461000)
+    (connect (terminal pin NANO1-21) (terminal pin J1-4))
+   )
+   )
+   (Net DIO. 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 6730000 -7747000 6730000 -7747000 6794500
+     -5969000 6794500 -5969000 6223000)
+    (connect (terminal pin NANO1-24) (terminal pin J2-4))
+   )
+   )
+   (Net G 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 6984001 -6477000 6984001 -6477000 7239000)
+    (connect (terminal pin NANO1-25) (terminal pin J3-2))
+   )
+   )
+   (Net G. 
+   (rule
+   )
+   (wire (path BOT 76200  -6477000 8001000 -6477000 7746001 -7976000 7746001)
+    (connect (terminal pin J4-2) (terminal pin NANO1-28))
+   )
+   )
+   (Net GND 
+   (rule
+   )
+   (wire (path BOT 76200  -9500000 4698000 -8733393 4698000 -8733393 5206000
+     -7976000 5206000)
+    (connect (terminal pin NANO1-13) (terminal pin NANO1-18))
+   )
+   (wire (path BOT 76200  -7976000 5206000 -6731000 5206000 -6731000 5461000)
+    (connect (terminal pin NANO1-18) (terminal pin J1-1))
+   )
+   (wire (path BOT 76200  -6731000 6223000 -6731000 5461000)
+    (connect (terminal pin J2-1) (terminal pin J1-1))
+   )
+   (wire (path BOT 76200  -6223000 7239000 -6223000 6667500 -6730999 6667500
+     -6730999 6223000 -6731000 6223000)
+    (connect (terminal pin J3-3) (terminal pin J2-1))
+   )
+   (wire (path BOT 76200  -6223000 8001000 -6223000 7239000)
+    (connect (terminal pin J4-3) (terminal pin J3-3))
+   )
+   (wire (path BOT 76200  -9500000 4698000 -9906000 4698000 -9906000 5080000
+     -10668000 5080000)
+    (connect (terminal pin NANO1-13) (terminal pin J7-0))
+   )
+   (wire (path BOT 76200  -10668000 6858000 -10668000 5080000)
+    (connect (terminal pin J6-1) (terminal pin J7-0))
+   )
+   (wire (path BOT 76200  -10668000 7493000 -10668000 6858000)
+    (connect (terminal pin J5-1) (terminal pin J6-1))
+    (attr bus)
+   )
+   )
+   (Net OUT 
+   (rule
+   )
+   (wire (path BOT 76200  -9500000 7238000 -9969500 7238000 -9969500 7493000
+     -10414000 7493000)
+    (connect (terminal pin NANO1-3) (terminal pin J5-2))
+   )
+   )
+   (Net OUT. 
+   (rule
+   )
+   (wire (path BOT 76200  -9500000 6984000 -9986408 6984000 -9986408 6858000
+     -10414000 6858000)
+    (connect (terminal pin NANO1-4) (terminal pin J6-2))
+   )
+   )
+   (Net R 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 7492001 -7620000 7492001 -7620000 7556500
+     -7175500 7556500 -7175500 7239000 -6985000 7239000)
+    (connect (terminal pin NANO1-27) (terminal pin J3-0))
+   )
+   )
+   (Net R. 
+   (rule
+   )
+   (wire (path BOT 76200  -9500000 8000000 -9500000 8191500 -7683500 8191500
+     -7683500 7937500 -7239000 7937500 -7239000 8001000 -6985000 8001000)
+    (connect (terminal pin NANO1-0) (terminal pin J4-0))
+   )
+   )
+   (Net RCLK 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 5714000 -7455755 5714000 -7455755 5080000
+     -6223000 5080000 -6223000 5461000)
+    (connect (terminal pin NANO1-20) (terminal pin J1-3))
+   )
+   )
+   (Net RCLK. 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 6476000 -7620000 6476000 -7620000 6540500
+     -6223000 6540500 -6223000 6223000)
+    (connect (terminal pin NANO1-23) (terminal pin J2-3))
+   )
+   )
+   (Net SCLK 
+   (rule
+   )
+   )
+   (Net Y 
+   (rule
+   )
+   (wire (path BOT 76200  -7976000 7238001 -7302500 7238001 -7302500 7429500
+     -6731000 7429500 -6731000 7239000)
+    (connect (terminal pin NANO1-26) (terminal pin J3-1))
+   )
+   )
+   (Net Y. 
+   (rule
+   )
+   (wire (path BOT 76200  -6731000 8001000 -6731000 8191500 -7366000 8191500
+     -7366000 8064500 -7810500 8064500 -7810500 8000000 -7976000 8000000)
+    (connect (terminal pin J4-1) (terminal pin NANO1-29))
+   )
+   )
+  )
+ )
